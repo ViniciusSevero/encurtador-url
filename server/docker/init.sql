@@ -1,0 +1,2 @@
+CREATE DATABASE url_shortner_db;
+CREATE DATABASE url_shortner_db_test;

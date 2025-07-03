@@ -1,0 +1,21 @@
+services:
+  pg:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=url_shortner_db
+    volumes:
+      - './docker:/docker-entrypoint-initdb.d'
+  app:
+    depends_on:
+      - pg
+    build: .
+    ports:
+      - '3333:3333'
+    env_file:
+      - ./.env # all variables will be loaded from .env file
+    environment:
+      - DATABASE_URL=postgresql://docker:docker@pg:5432/url_shortner_db
