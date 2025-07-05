@@ -15,6 +15,7 @@ type GetOriginalUrlByShortenedUrlInput = z.input<
 >
 
 type GetOriginalUrlByShortenedUrlOutput = {
+	id: string
 	originalUrl: string
 }
 
@@ -25,6 +26,7 @@ export async function getOriginalUrlByShortenedUrl(
 
 	const response = await db
 		.select({
+			id: schema.shortenedUrls.id,
 			originalUrl: schema.shortenedUrls.originalUrl,
 		})
 		.from(schema.shortenedUrls)
@@ -34,6 +36,6 @@ export async function getOriginalUrlByShortenedUrl(
 		return makeLeft(new UrlNotFound())
 	}
 
-	const [{ originalUrl }] = response
-	return makeRight({ originalUrl })
+	const [{ id, originalUrl }] = response
+	return makeRight({ id, originalUrl })
 }

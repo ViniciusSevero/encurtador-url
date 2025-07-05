@@ -15,6 +15,7 @@ export const getOriginalUrl: FastifyPluginAsyncZod = async server => {
 				}),
 				response: {
 					200: z.object({
+						id: z.string(),
 						originalUrl: z.string(),
 					}),
 					404: z.object({
@@ -29,8 +30,8 @@ export const getOriginalUrl: FastifyPluginAsyncZod = async server => {
 			const result = await getOriginalUrlByShortenedUrl({ shortenedUrl })
 
 			if (isRight(result)) {
-				const { originalUrl } = unwrapEither(result)
-				return reply.status(200).send({ originalUrl })
+				const { id, originalUrl } = unwrapEither(result)
+				return reply.status(200).send({ id, originalUrl })
 			}
 
 			const error = unwrapEither(result)

@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 export const generateReport: FastifyPluginAsyncZod = async server => {
 	server.get(
-		'/report/',
+		'/report',
 		{
 			schema: {
 				summary: 'Get the original URL by a shortened URL',
