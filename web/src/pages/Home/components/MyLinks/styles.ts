@@ -4,7 +4,14 @@ import { BaseButton } from "@/components/ui/Button/styles"
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 
 export const MyLinksContainer = styled(BaseSection)`
-    max-height: 36.25rem;
+    /* max-height: 36.25rem; */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-height: calc(100vh - 12.5rem);
+    @media screen and (max-width:600px) {
+        height: 0;
+    }
 `
 
 export const MyLinksHeader = styled.div`
@@ -17,9 +24,11 @@ export const DownloadButton = styled(BaseButton)`
     
 `
 export const LinkList = styled.div`
+    flex: 1;
     display: flex;
     flex-direction: column;
     margin-top: 1.25rem;
+    height: 0;
 `
 
 export const MyScrollArea = styled(ScrollArea.Root)<ScrollArea.ScrollAreaViewportProps & React.RefAttributes<HTMLDivElement>>`
@@ -27,7 +36,9 @@ export const MyScrollArea = styled(ScrollArea.Root)<ScrollArea.ScrollAreaViewpor
 `
 
 export const MyScrollViewport = styled(ScrollArea.Viewport)`
-    max-height: 22.188rem;
+    /* max-height: 22.188rem; */
+    max-height: 100%;
+    
     padding-right: 1rem;
     border-radius: inherit;
 `

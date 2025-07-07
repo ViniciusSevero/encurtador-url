@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { BaseSection } from "../../styles"
 
 export const FormContainer = styled(BaseSection)`
+    align-self: start;
+
     form {
         display: flex;
         flex-direction: column;
@@ -53,6 +55,10 @@ export const FormControlGroup = styled.div`
         &:focus {
             border: 1px solid ${props => props.theme["blue-dark"]};
         }
+
+        &[data-invalid]:not(:focus-within) {
+            border-color: ${props => props.theme["danger"]};
+        }
     }
 
     &:focus-within label {
@@ -85,10 +91,15 @@ export const InputBox = styled.div`
         border: 1px solid ${props => props.theme["blue-dark"]};
     }
 
+    &[data-invalid]:not(:focus-within) {
+        border-color: ${props => props.theme["danger"]};
+    }
+
     input {
         border: none;
         outline: none;
         padding: 0.938rem 0.938rem 0.938rem 0;
+        width: 100%;
     }
 
     input::placeholder{
@@ -100,4 +111,15 @@ export const InputBox = styled.div`
     }
     
 
+`
+
+export const ValidationMessage = styled.span`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font: ${props => props.theme["text-sm"]};
+
+    svg {
+        color: ${props => props.theme.danger};
+    }
 `

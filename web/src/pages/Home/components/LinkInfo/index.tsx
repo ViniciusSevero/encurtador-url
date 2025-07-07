@@ -33,7 +33,6 @@ export function LinkInfo({ urlInfo: { id, originalUrl, shortenedUrl, accessCount
 
     function handleDeleteLink(id: string, shortenedUrl: string) {
         if (window.confirm(`Você deseja realmente apagar o link ${shortenedUrl}?`)) {
-            console.log('deletando', id)
             deleteLinkFn({ id })
         } 
     }

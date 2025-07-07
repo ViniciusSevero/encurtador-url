@@ -28,6 +28,7 @@ export const MainContainer = styled.main`
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: calc(100vh - 5.938rem);
     }
 
 `

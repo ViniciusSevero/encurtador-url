@@ -21,6 +21,9 @@ export const createShortenedUrl: FastifyPluginAsyncZod = async server => {
 					400: z.object({
 						message: z.string(),
 					}),
+					409: z.object({
+						message: z.string(),
+					}),
 				},
 			},
 		},
@@ -36,7 +39,7 @@ export const createShortenedUrl: FastifyPluginAsyncZod = async server => {
 
 			const error = unwrapEither(result)
 
-			return reply.status(400).send({ message: error.message })
+			return reply.status(409).send({ message: error.message })
 		}
 	)
 }
